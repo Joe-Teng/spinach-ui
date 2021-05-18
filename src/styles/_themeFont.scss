@@ -1,0 +1,11 @@
+$font: Nunito Sans;
+
+* {
+  font-family: $font;
+
+  @for $i from 12 to 48 {
+    &.m-font-#{$i} {
+      font-size: #{$i}px;
+    }
+  }
+}
