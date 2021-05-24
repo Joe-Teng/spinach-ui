@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import classNames from "classnames";
 import "./_style.scss";
-
-import { Button } from "antd";
 import "antd/lib/button/style/css";
 
 const MButton = (props) => {
