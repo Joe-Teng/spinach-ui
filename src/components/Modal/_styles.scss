@@ -1,0 +1,124 @@
+$modalWidth: 370px;
+$headerHeight: 50px;
+$footerHeight: 50px;
+$borderWidth: 1px;
+$borderColor: #EAEAEA;
+
+body {
+  height: 3000px;
+}
+
+.s-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, .25);
+
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+
+  .s-modal-content {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: $modalWidth;
+    background-color: #FFF;
+    background: #FFF;
+    border-radius: 8px;
+
+    &>.s-modal-header {
+      height: $headerHeight;
+      line-height: $headerHeight;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+
+      &::after {
+        content: "";
+        width: 100%;
+        height: $borderWidth;
+        background-color: $borderColor;
+        background: $borderColor;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+
+      .anticon-close {
+        cursor: pointer;
+      }
+    }
+
+    &>.s-modal-body {
+      min-height: 200px;
+      padding: 20px 0;
+    }
+
+    &>.s-modal-footer {
+      height: $footerHeight;
+      line-height: $footerHeight;
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+
+      &::before {
+        content: "";
+        width: 100%;
+        height: $borderWidth;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $borderColor;
+        background: $borderColor;
+      }
+
+      .modal-footer-btns {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .modal-footer-links,
+      .modal-footer-btns {
+        .modal-footer-btn {
+          cursor: pointer;
+        }
+      }
+
+      .s-btn-link {
+        &:hover {
+          text-decoration: underline;
+          margin-right: 12px;
+        }
+      }
+
+      .s-btn-confirm {
+        margin-left: 12px;
+      }
+    }
+  }
+
+  $i: 0;
+
+  @for $i from 1 to 100 {
+    .s-modal-pd-horizontal-#{$i} {
+
+      .s-modal-header,
+      .s-modal-body,
+      .s-modal-footer {
+        padding-left: #{$i}px;
+        padding-right: #{$i}px;
+      }
+
+    }
+  }
+}

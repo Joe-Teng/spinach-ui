@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles/index.scss";
 import SButton from "./components/Button/index";
+import SModal from "./components/Modal/Modal";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className="App m-font-13">
-      <SButton themeColor="#1B1B1B" buttonType={"border"} />
+      <button
+        onClick={() => {
+          setShowModal(true);
+        }}
+      >
+        show modal
+      </button>
+      <SModal
+        visible={showModal}
+        title={"title"}
+        width={470}
+        paddingHorizontal={24}
+        onClose={() => {
+          setShowModal(false);
+        }}
+        btns={["确定", "取消", "other links"]}
+      >
+        <div>1231231231231</div>
+      </SModal>
     </div>
   );
 }
