@@ -1,0 +1,18 @@
+@import './themeColor';
+
+@import './themeFont';
+
+html,
+body,
+#app,
+.App {
+  // scrollbar-width: none;
+  // /*Firefox*/
+  // -ms-overflow-style: none;
+  // /*IE10+*/
+
+  // &::-webkit-scrollbar {
+  //   display: none;
+  //   /*ChromeSafari*/
+  // }
+}
