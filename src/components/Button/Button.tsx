@@ -4,42 +4,42 @@ import "./_style.scss";
 
 export type ButtonType = "fill" | "border" | "link";
 
-interface ButtonProps {
-  /** className of the button */
-  className?: String;
+interface BaseButtonProps {
   /** type of the button */
   buttonType?: ButtonType;
-  /** color of the button */
-  themeColor?: String;
+  /** className of the button */
+  className?: String;
+  /** lik type button should have href */
+  href?: string;
+  /** children */
+  children?: React.ReactNode;
+  styles?: React.CSSProperties;
 }
 
+type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>;
+type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>;
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
+
 const SButton: FC<ButtonProps> = (props) => {
-  const { buttonType, themeColor } = props;
+  const {
+    children = <span>button</span>,
+    buttonType = "fill",
+    className,
+    styles,
+    ...restProps
+  } = props;
 
-  /** set the butotn normal styles */
-  let styles = {};
-  switch (buttonType) {
-    case "fill":
-      styles = {
-        background: themeColor || "#1B1B1B",
-        backgroundColor: themeColor || "#1B1B1B",
-        color: "#FFF",
-        border: `2px solid ${themeColor ? themeColor : "#1B1B1B"}`,
-      };
-      break;
-    case "border":
-      styles = {
-        background: "#FFF",
-        backgroundColor: "#FFF",
-        border: `2px solid ${themeColor ? themeColor : "#1B1B1B"}`,
-        color: themeColor || "#1B1B1B",
-      };
-      break;
-    default:
-      break;
-  }
+  const classes = classNames("s-btn", className, {
+    [`s-btn-${buttonType}`]: buttonType,
+  });
 
-  return <div style={styles}>123</div>;
+  return buttonType && buttonType === "link" ? (
+    <a>{children}</a>
+  ) : (
+    <button className={classes} style={styles} {...restProps}>
+      {children}
+    </button>
+  );
 };
 
 export default SButton;

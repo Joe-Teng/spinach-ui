@@ -1,1 +1,11 @@
-$themeColor: '#1B1B1B';
+.s-btn {
+  margin: 0;
+  border: none;
+  outline: none;
+  background: #FFF;
+  background-color: #FFF;
+  padding: 7px 13px;
+  border-radius: 10px;
+
+  &.s-btn-fill {}
+}

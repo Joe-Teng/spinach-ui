@@ -2,6 +2,7 @@ import React, { FC, useEffect } from "react";
 import "./_styles.scss";
 import classNames from "classnames";
 import { CloseOutlined } from "@ant-design/icons";
+import SButton from "./../Button/index";
 
 interface ModalProps {
   /** show or hidden the component */
@@ -75,12 +76,12 @@ const SModal: FC<ModalProps> = (props) => {
           <div className="s-modal-footer">
             {btns.length === 2 && (
               <React.Fragment>
-                <div
+                <SButton
                   className="modal-footer-btn s-btn-cancle"
                   onClick={onClose}
                 >
-                  {"取消"}
-                </div>
+                  取消
+                </SButton>
                 <div
                   className="modal-footer-btn s-btn-confirm"
                   onClick={onConfirm}
@@ -102,18 +103,18 @@ const SModal: FC<ModalProps> = (props) => {
                   ))}
                 </div>
                 <div className="modal-footer-btns">
-                  <div
+                  <SButton
                     className="modal-footer-btn s-btn-cancle"
                     onClick={onClose}
                   >
-                    {"取消"}
-                  </div>
-                  <div
+                    取消
+                  </SButton>
+                  <SButton
                     className="modal-footer-btn s-btn-confirm"
                     onClick={onConfirm}
                   >
-                    {"确认"}
-                  </div>
+                    确认
+                  </SButton>
                 </div>
               </React.Fragment>
             )}

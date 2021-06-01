@@ -7,13 +7,15 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   return (
     <div className="App m-font-13">
-      <button
+      <SButton
+        styles={{
+          background: "red",
+          color: "#FFF",
+        }}
         onClick={() => {
           setShowModal(true);
         }}
-      >
-        show modal
-      </button>
+      ></SButton>
       <SModal
         visible={showModal}
         title={"title"}
