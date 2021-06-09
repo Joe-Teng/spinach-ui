@@ -8,10 +8,9 @@ function App() {
   return (
     <div className="App m-font-13">
       <SButton
-        styles={{
-          background: "red",
-          color: "#FFF",
-        }}
+        buttonShape="fillet"
+        buttonType="link"
+        className="ft-14"
         onClick={() => {
           setShowModal(true);
         }}
@@ -25,6 +24,7 @@ function App() {
           setShowModal(false);
         }}
         btns={["确定", "取消", "other links"]}
+        renderBottom={() => <div>123</div>}
       >
         <div>1231231231231</div>
       </SModal>

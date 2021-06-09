@@ -1,11 +1,76 @@
+$themeColor: #CF1F2E;
+$themeFontColor: #1B1B1B;
+$btn-normal-width: 40px;
+
 .s-btn {
   margin: 0;
   border: none;
   outline: none;
   background: #FFF;
   background-color: #FFF;
-  padding: 7px 13px;
-  border-radius: 10px;
+  cursor: pointer;
 
-  &.s-btn-fill {}
+  font-family: Nunito Sans;
+  font-style: normal;
+  letter-spacing: .05rem;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
+
+  @for $i from 1 to 100 {
+    &.ft-#{$i} {
+      font-size: #{$i}px;
+    }
+  }
+
+  &.s-btn-square,
+  &.s-btn-circular {
+    width: $btn-normal-width;
+    height: $btn-normal-width;
+    line-height: $btn-normal-width;
+    text-align: center;
+  }
+
+  &.s-btn-circular {
+    border-radius: 20px;
+  }
+
+  &.s-btn-fillet {
+    padding: 6.4px 20px;
+    border-radius: 40px;
+    ;
+  }
+
+  &.s-btn-fill {
+    background-color: $themeColor;
+    color: #FFF;
+  }
+
+  &.s-btn-border {
+    border: 1px solid $themeColor;
+    background-color: #FFF;
+    background: #FFF;
+    color: $themeColor;
+  }
+
+  &.s-btn-link {
+    border: none;
+    background-color: #FFF;
+    background: #FFF;
+
+    &:hover {
+      color: $themeColor;
+      position: relative;
+
+      &::after {
+        content: "";
+        width: 70%;
+        height: 2px;
+        background-color: $themeColor;
+        background: $themeColor;
+        position: absolute;
+        bottom: -1px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
 }

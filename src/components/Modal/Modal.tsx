@@ -23,6 +23,8 @@ interface ModalProps {
   onConfirm?: () => void;
   /** footer buttons */
   btns?: string[];
+  /** footer other elements */
+  renderBottom?: () => React.ReactElement;
 }
 
 const SModal: FC<ModalProps> = (props) => {
@@ -35,10 +37,9 @@ const SModal: FC<ModalProps> = (props) => {
     width = 350,
     paddingHorizontal = 24,
     onClose = () => {},
-    onConfirm = () => {
-      onClose();
-    },
+    onConfirm = onClose,
     children,
+    renderBottom,
     btns = [],
   } = props;
   const classes = classNames("s-modal", className, {});
@@ -74,50 +75,29 @@ const SModal: FC<ModalProps> = (props) => {
         <div className="s-modal-body">{children}</div>
         {btns && btns.length > 0 && (
           <div className="s-modal-footer">
-            {btns.length === 2 && (
-              <React.Fragment>
-                <SButton
-                  className="modal-footer-btn s-btn-cancle"
-                  onClick={onClose}
-                >
-                  取消
-                </SButton>
-                <div
-                  className="modal-footer-btn s-btn-confirm"
-                  onClick={onConfirm}
-                >
-                  {"确认"}
-                </div>
-              </React.Fragment>
-            )}
-            {btns.length > 2 && (
-              <React.Fragment>
-                <div className="modal-footer-links">
-                  {btns.slice(2).map((item: string, index: number) => (
-                    <span
-                      key={`s-btn-link-${index}`}
-                      className="modal-footer-btn s-btn-link"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <div className="modal-footer-btns">
+            <React.Fragment>
+              {renderBottom && renderBottom()}
+              <div className="modal-footer-btns">
+                {btns.length > 1 && (
                   <SButton
-                    className="modal-footer-btn s-btn-cancle"
+                    buttonType="fill"
+                    buttonShape="fillet"
                     onClick={onClose}
                   >
-                    取消
+                    {btns[1]}
                   </SButton>
+                )}
+                {btns.length > 0 && (
                   <SButton
-                    className="modal-footer-btn s-btn-confirm"
+                    buttonType="fill"
+                    buttonShape="fillet"
                     onClick={onConfirm}
                   >
-                    确认
+                    {btns[0]}
                   </SButton>
-                </div>
-              </React.Fragment>
-            )}
+                )}
+              </div>
+            </React.Fragment>
           </div>
         )}
       </div>
