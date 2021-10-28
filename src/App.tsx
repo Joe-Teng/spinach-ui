@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "./styles/index.scss";
 import SButton from "./components/Button/index";
 import SModal from "./components/Modal/Modal";
+import ReactEvent from "./components/ReactEvent";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
   return (
     <div className="App m-font-13">
-      <SButton
+      {/* <SButton
         buttonShape="fillet"
         buttonType="link"
         className="ft-14"
@@ -27,7 +28,8 @@ function App() {
         renderBottom={() => <div>123</div>}
       >
         <div>1231231231231</div>
-      </SModal>
+      </SModal> */}
+      <ReactEvent />
     </div>
   );
 }
